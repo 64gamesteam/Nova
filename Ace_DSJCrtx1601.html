@@ -1,1 +1,45 @@
-<p>Ace_DSJCrtx1601</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Content Addition</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+    </style>
+</head>
+<body>
+<h1>Welcome, Ace King.</h1>
+<h2>Type story elements in the box below:</h2>
+
+<input type="text" id="userInput" placeholder="Type here...">
+<button onclick="addContent()">Submit to website</button>
+
+<div id="output"></div>
+
+<script>
+    function addContent() {
+        // Get the user input
+        var userInput = document.getElementById("userInput").value;
+
+        // Create a new paragraph element
+        var newParagraph = document.createElement("p");
+
+        // Set the text content of the paragraph to the user input
+        newParagraph.textContent = userInput;
+
+        // Get the output div and append the new paragraph
+        var outputDiv = document.getElementById("output");
+        outputDiv.appendChild(newParagraph);
+
+        // Clear the input box after adding content
+        document.getElementById("userInput").value = "";
+    }
+</script>
+
+</body>
+</html>
