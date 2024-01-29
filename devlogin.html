@@ -12,50 +12,19 @@
     <br>
     <button type="submit">login</button>
   </form>
-<button onclick="window.location.href='index.html'" type="button">Go back to main page</button>
-  <script>
-    function checkText(event) {<!DOCTYPE html>
-<html>
-<head>
-  <title>Developer Login</title>
-</head>
-<body>
-  <h1>Login</h1>
-  <form id="myForm" onsubmit="return checkText(event)" action="redirect.html">
-    <br>
-    <label for="textInput2">Password:</label>
-    <input type="text" id="textInput2" required>
-    <br>
-    <button type="submit">login</button>
-  </form>
-<button onclick="window.location.href='index.html'" type="button">Go back to main page</button>
+  <button onclick="window.location.href='index.html'" type="button">Go back to main page</button>
 
   <script>
     function checkText(event) {
       event.preventDefault(); // Prevent the default form submission
       var userInput2 = document.getElementById("textInput2").value;
-      // Replace "correct value 1" and "correct value 2" with the expected values
-      if (userInput2 === "MikeyDSMJCgtx1060") {
-        window.location.href = "MichaelMJCrtx1060.html"; // Redirect to the desired page
-      } else {
-      if (userInput2 === "Ace_isourstorywriter69") {
-        window.location.href = "Ace_DSJCrtx1601.html"; // Redirect to the desired page
-	} else{
-        alert("Password is incorrect, if you are a developer please contact Mikey.");
-      }
-    }
-  </script>
-</body>
-</html>
-      event.preventDefault(); // Prevent the default form submission
-      var userInput2 = document.getElementById("textInput2").value;
+
       // Replace "correct value 1" and "correct value 2" with the expected values
       if (userInput2 === "MikeyDSMJCgtx1060") {
         window.location.href = "https://64gamesteam.github.io/Nova/MichaelMJCrtx1060.html";
-      } else {
-      if (userInput2 === "Ace_isourstorywriter69") {
+      } else if (userInput2 === "Ace_isourstorywriter69") {
         window.location.href = "https://64gamesteam.github.io/Nova/Ace_DSJCrtx1601.html";
-	} else{
+      } else {
         alert("Password is incorrect, if you are a developer please contact Mikey.");
       }
     }
