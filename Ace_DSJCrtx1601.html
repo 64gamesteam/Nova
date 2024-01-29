@@ -10,6 +10,17 @@
             text-align: center;
             margin: 50px;
         }
+
+        .message {
+            margin-bottom: 10px;
+        }
+
+        .remove-button {
+            cursor: pointer;
+            color: red;
+            border: none;
+            background: none;
+        }
     </style>
 </head>
 <body>
@@ -18,65 +29,92 @@
 
 <input type="text" id="userInput" placeholder="Type here...">
 <button onclick="addContent()">Add to Website</button>
-<p> </p>
+
 <div id="output"></div>
-<button onclick="window.location.href='index.html'" type="button">Go back to main page</button>
+<div>
+    <button onclick="window.location.href='index.html'" type="button">Go back to main page</button>
+</div>
 <script>
-    // Load existing content from localStorage on page load
     document.addEventListener('DOMContentLoaded', function () {
         loadContent();
     });
 
     function addContent() {
-        // Get the user input
         var userInput = document.getElementById("userInput").value;
 
         if (userInput.trim() !== "") {
-            // Create a new paragraph element
             var newParagraph = document.createElement("p");
-
-            // Set the text content of the paragraph to the user input
             newParagraph.textContent = userInput;
 
-            // Get the output div and append the new paragraph
+            // Add a remove button to the paragraph
+            var removeButton = document.createElement("button");
+            removeButton.textContent = "Remove";
+            removeButton.className = "remove-button";
+            removeButton.onclick = function () {
+                removeContent(newParagraph);
+            };
+
+            // Append the remove button to the paragraph
+            newParagraph.appendChild(removeButton);
+
             var outputDiv = document.getElementById("output");
             outputDiv.appendChild(newParagraph);
 
-            // Save content to localStorage
             saveContent();
 
-            // Clear the input box after adding content
             document.getElementById("userInput").value = "";
         }
     }
 
     function saveContent() {
-        // Get the existing content from localStorage
         var existingContent = JSON.parse(localStorage.getItem('userContent')) || [];
-
-        // Get the user input
         var userInput = document.getElementById("userInput").value;
-
-        // Add the user input to the existing content array
         existingContent.push(userInput);
-
-        // Save the updated content back to localStorage
         localStorage.setItem('userContent', JSON.stringify(existingContent));
     }
 
     function loadContent() {
-        // Get the existing content from localStorage
         var existingContent = JSON.parse(localStorage.getItem('userContent')) || [];
-
-        // Get the output div
         var outputDiv = document.getElementById("output");
 
-        // Iterate over existing content and append paragraphs
         existingContent.forEach(function (content) {
-            var newParagraph = document.createElement("p");
-            newParagraph.textContent = content;
-            outputDiv.appendChild(newParagraph);
+            createParagraph(content, outputDiv);
         });
+    }
+
+    function createParagraph(content, container) {
+        var newParagraph = document.createElement("p");
+        newParagraph.textContent = content;
+
+        // Add a remove button to the paragraph
+        var removeButton = document.createElement("button");
+        removeButton.textContent = "Remove";
+        removeButton.className = "remove-button";
+        removeButton.onclick = function () {
+            removeContent(newParagraph);
+        };
+
+        // Append the remove button to the paragraph
+        newParagraph.appendChild(removeButton);
+
+        // Append the paragraph to the container
+        container.appendChild(newParagraph);
+    }
+
+    function removeContent(element) {
+        // Remove the paragraph from the DOM
+        element.remove();
+
+        // Update localStorage with the remaining content
+        var outputDiv = document.getElementById("output");
+        var paragraphs = outputDiv.getElementsByClassName("message");
+        var remainingContent = [];
+
+        for (var i = 0; i < paragraphs.length; i++) {
+            remainingContent.push(paragraphs[i].textContent);
+        }
+
+        localStorage.setItem('userContent', JSON.stringify(remainingContent));
     }
 </script>
 
