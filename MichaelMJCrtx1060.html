@@ -1,1 +1,39 @@
-<p>MichaelMJCrtx1060</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Dev Page</title>
+    <style>
+        /* Add your styles here */
+        #messageContainer {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Welcome, Michael Campbell</h1>
+<p>Message for classmate:</p>
+<input type="text" placeholder="Type Message here...">
+<b>words:</b>
+
+<button onclick="showMessages()">Show Messages</button>
+
+<div id="messageContainer">
+    <p>Ace_isourstorywriter69</p>
+</div>
+
+<script>
+    function showMessages() {
+        var messageContainer = document.getElementById("messageContainer");
+        if (messageContainer.style.display === "none") {
+            messageContainer.style.display = "block";
+        } else {
+            messageContainer.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>
